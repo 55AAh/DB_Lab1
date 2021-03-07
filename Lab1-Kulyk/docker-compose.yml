@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  populate:
+    build: ./populate/
+    env_file:
+      - db-auth.env
+      - populate_conf.env
+    environment:
+      - DB_HOST=db
+    volumes:
+      - ./populate/data:/populate/data
+    depends_on:
+      - db
+  db:
+    container_name: db
+    image: postgres:latest
+    env_file:
+      - db-auth.env
+    restart: always
