@@ -16,4 +16,8 @@ services:
     image: postgres:latest
     env_file:
       - db-auth.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     restart: always
+volumes:
+  pgdata:
