@@ -186,7 +186,8 @@ class Populate:
                                                             "INSERT INTO TARGET TABLE")
 
                 if end:
-                    print_flush(f"{' ' * 35}\r\x1b[1K\rPopulating from file '{file_name}' ({year}): done!")
+                    print_flush(f"\r\x1b[1K\rPopulating from file '{file_name}' ({year}): {' ' * 35}", end="")
+                    print_flush(f"\r\x1b[1K\rPopulating from file '{file_name}' ({year}): done!")
                     DbOperation(self.db).execute("DELETE FROM AUX TABLE",
                                                  f'DELETE FROM "{self.aux_table_name}" '
                                                  f'WHERE file_name = %s',
